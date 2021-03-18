@@ -1,0 +1,71 @@
+#{extends 'main.html' /} #{set title:'MODIFICAR SOLICITAÇÃO' /}
+
+<h1 class="card-title">
+								<b>Modificar emprestimo</b>
+							</h1><br>
+
+
+<form action="@{Emprestimos.edicao}" method="post">
+  <input type="hidden" name="emp.id" value="${emp?.id}">
+  <select name = "idUsuario">
+  		<option value = "">Selecionar Usuario</option>
+   		#{list items:usuarios, as:'usuario'}
+   		<option value = "${usuario?.id}" #{if usuario.id == usuario?.id} selected #{/if}>${usuario.userMatric} | ${usuario.nome}</option>
+   		#{/list}
+  
+  </select>
+  <span class='vermelho'>#{error 'usuario.id' /}</span>
+	<br/>
+   
+   
+   
+   <div class="card-body table-responsive p-0">
+							<table class="table table-hover text-nowrap">
+								<thead>
+									<tr>
+										
+										<th>Nome</th>
+										<th>Cor</th>
+										<th>Detalhes</th>
+										<th>Especificações</th>
+
+									</tr>
+								</thead>
+								<tbody> 
+									#{list items:materiais, as:'mat'}
+									
+									
+									<tr>
+							
+										 
+										<td><input type = "checkbox"  name = "idMateriais" value = "${mat?.id}"> ${mat.nome}</td>
+										<td>${mat.cor}</td>
+										<td>${mat.detalhes}</td>
+										<td>${mat.nTombo}</td>
+
+										
+									</tr>
+									#{/list} #{else}
+									<th class="btn btn-block btn-danger"><b>NENHUM MATERIAL
+											CADASTRADO</b></th> #{/else}
+								</tbody/>
+							</table>
+						</div>
+ 
+<label for ="dataSolicitacao">DATA DE SOLICITAçÃO:</label>  
+ <input type = "datetime-local" name = "dataSolicitacao" value= "${emp?.dataEmpIn}">
+<label for ="dataDevolucao">DATA DE DEVOLUçÃO:</label>
+ <input type ="datetime-local" name= "dataDevolucao" value= "${emp?.dataEmpFn}"><br>
+
+         
+
+SITUAçÃO: <input type ="radio" name= "s" value = "Em andamento" #{if emp?.situacao == "Em andamento"} checked #{/if}> Em andamneto
+		  <input type ="radio" name= "s" value = "Finalizado" #{if emp?.situacao == "Finalizado"} checked #{/if}> Finalizado	
+<button type="submit" class="btn btn-success">CADASTRAR</button>
+<div class="social-auth-links text-center">
+					<a href="@{Emprestimos.listar()}" class="btn btn-block btn-warning">EMPRESTIMOS
+						CADASTRADOS </a>
+				</div>
+
+</form>
+

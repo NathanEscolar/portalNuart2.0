@@ -1,0 +1,68 @@
+#{extends 'main.html' /} #{set title:'MODIFICAR AGENDAMENTO' /}
+
+<h1 class="card-title">
+								<b>Modificar Agendamento</b>
+							</h1><br>
+
+
+<form action="@{Solicitacoes.edicao}" method="post">
+  <input type="hidden" name="sol.id" value="${solicitacao?.id}">
+  <select name = "idUsuario">
+  		<option value = "">Selecionar Usuario</option>
+   		#{list items:usuarios, as:'usuario'}
+   		<option value = "${usuario?.id}" #{if solicitacao?.usuario?.id == usuario.id} selected #{/if}>${usuario.userMatric} | ${usuario.nome}</option>
+   		#{/list}
+  
+  </select>
+  <span class='vermelho'>#{error 'usuario.id' /}</span>
+	<br/>
+   
+   
+   
+   <div class="card-body table-responsive p-0">
+							<table class="table table-hover text-nowrap">
+								<thead>
+									<tr>
+										
+										<th>Sala</th>
+										<th>Bloco</th>
+										
+
+									</tr>
+								</thead>
+								<tbody> 
+									#{list items:salas, as:'sala'}
+									
+									
+									<tr>
+							
+										 
+										<td><input type = "checkbox"  name = "idSala" value = "${sala?.id}" checked> ${sala.nSala}</td>
+										<td>${sala.bloco}</td>
+										
+										
+									</tr>
+									#{/list} #{else}
+									<th class="btn btn-block btn-danger"><b>NENHUM SALA
+											CADASTRADA</b></th> #{/else}
+								</tbody/>
+							</table>
+						</div>
+ 
+<label for ="dataSolicitacao">DATA DE SOLICITAÇÃO:</label>  
+ <input type = "datetime-local" name = "dataSolicitacao" value= "${sol?.dataIn}" checked>
+<label for ="dataDevolucao">DATA DE DEVOLUÇÃO:</label>
+ <input type ="datetime-local" name= "dataDevolucao" value= "${sol?.dataFn}" checked><br>
+
+         
+
+SITUACAO: <input type ="radio" name= "situ	" value = "Agendada" #{if sol?.situacao == "Agendada"} checked #{/if}> Em andamneto
+		  <input type ="radio" name= "situ" value = "Finalizado" #{if sol?.situacao == "Finalizado"} checked #{/if}> Finalizado	
+<button type="submit" class="btn btn-success">CADASTRAR</button>
+<div class="social-auth-links text-center">
+					<a href="@{Solicitacoes.listar()}" class="btn btn-block btn-warning">EMPRESTIMOS
+						CADASTRADOS </a>
+				</div>
+
+</form>
+

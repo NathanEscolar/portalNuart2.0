@@ -1,0 +1,110 @@
+#{extends 'main.html' /} #{set title:'Formulário do Aluno' /}
+
+
+<body class="hold-transition register-page">
+
+<center>	<div class="register-box">
+		<div class="card card-outline card-primary">
+			<div class="card-header text-center">
+				<a class="h1"><b>PORTAL NUART</b></a>
+			</div>
+			<div class="card-body">
+				<p class="login-box-msg">Cadastro do Aluno</p>
+
+				<form action="@{Alunos.salvar}" method="post">
+					<input type="hidden" name="al.id" value="${al?.id}">
+					<div class="input-group mb-3">
+						<input id="al-nome" class="form-control" type="text"
+							name="al.nome" value="${ al?.nome}" placeholder="Nome">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<span class='vermelho'>#{error 'produto.nome' /}</span>
+	<br/>
+					<div class="input-group mb-3">
+						<input id="al-userMatric" class="form-control" type="text"
+							name="al.userMatric" value="${al?.userMatric}"
+							placeholder="Matrícula">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					
+		<span class='vermelho'>#{error 'al.userMatric' /}</span>
+	<br/>			
+
+					<div class="input-group mb-3">
+						<input id="al-curso" class="form-control" type="text"
+							name="al.curso" value="${al?.curso}" placeholder="Curso">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					
+		<span class='vermelho'>#{error 'al.curso' /}</span>
+	<br/>			
+					
+					<div class="input-group mb-3">
+						<input id="al-turma" class="form-control" type="text"
+							name="al.turma" value="${al?.turma}" placeholder="Turma">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					
+					<span class='vermelho'>#{error 'al.turma' /}</span>
+	<br/>
+ 						<div class="input-group mb-3">
+						<input id="al-turno" class="form-control" type="text"
+							name="al.turno" value="${al?.turno}" placeholder="Turno">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<span class='vermelho'>#{error 'al.turno' /}</span>
+	<br/>
+
+					<button type="submit" class="btn btn-success">CADASTRAR</button>
+
+				</form>
+
+				<div class="social-auth-links text-center">
+					<a href="@{Alunos.listar()}" class="btn btn-block btn-warning">ALUNOS
+						CADASTRADOS </a>
+				</div>
+
+				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+					<a href="@{Application.index()}" class="btn btn-danger"> VOLTAR </a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</center></div>
+
+	<!-- jQuery -->
+	<script src="@{'/public/AdminLTE/plugins/jquery/jquery.min.js'}"></script>
+	<!-- Bootstrap 4 -->
+	<script
+		src="@{'/public/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js'}"></script>
+	<!-- AdminLTE App -->
+	<script src="@{'/public/AdminLTE/dist/js/adminlte.min.js'}"></script>
+</body>
+</html>
+
+
+
+
+

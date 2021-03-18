@@ -1,0 +1,88 @@
+#{extends 'main.html' /} #{set title:'Cadastro Materiais' /}
+
+
+<body class="hold-transition register-page">
+
+	<center></center><div class="register-box">
+		<div class="card card-outline card-primary">
+			<div class="card-header text-center">
+				<a class="h1"><b>PORTAL NUART</b></a>
+			</div>
+			<div class="card-body">
+				<p class="login-box-msg">Materiais</p>
+
+				<form action="@{Materiais.salvar}" method="post">
+					<input type="hidden" name="mat.id" value="${mat?.id}">
+					<div class="input-group mb-3">
+						<input id="mat-nome" class="form-control" type="text"
+							name="mat.nome" value="${mat?.nome}" placeholder="Nome">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+<span class='vermelho'>#{error 'mat.nome' /}</span>
+	<br/>
+					<div class="input-group mb-3">
+						<input id="mat-cor" class="form-control" type="text"
+							name="mat.cor" value="${mat?.cor}"
+							placeholder="Cor do Instrumento/Material">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+<span class='vermelho'>#{error 'mat.cor' /}</span>
+	<br/>
+					<div class="input-group mb-3">
+						<input id="mat-detalhes" class="form-control" type="text"
+							name="mat.detalhes" value="${mat?.detalhes}" placeholder="Detalhes do Intrumento/Material">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+<span class='vermelho'>#{error 'mat.detalhes' /}</span>
+	<br/>
+					<div class="input-group mb-3">
+						<input id="mat-nTombo" class="form-control" type="text"
+							name="mat.nTombo" value="${mat?.nTombo}" placeholder="Especifições">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+<span class='vermelho'>#{error 'mat.nTombo' /}</span>
+	<br/>
+					<button type="submit" class="btn btn-success">CADASTRAR</button>
+
+				</form>
+
+				<div class="social-auth-links text-center">
+					<a href="@{Materiais.listar()}" class="btn btn-block btn-warning">MATERIAIS
+						CADASTRADOS </a>
+				</div>
+
+				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+					<a href="@{Application.index()}" class="btn btn-danger"> VOLTAR </a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div></center>
+
+	<!-- jQuery -->
+	<script src="@{'/public/AdminLTE/plugins/jquery/jquery.min.js'}"></script>
+	<!-- Bootstrap 4 -->
+	<script
+		src="@{'/public/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js'}"></script>
+	<!-- AdminLTE App -->
+	<script src="@{'/public/AdminLTE/dist/js/adminlte.min.js'}"></script>
+</body>
+</html>

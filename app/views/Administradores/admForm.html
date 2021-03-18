@@ -1,0 +1,113 @@
+#{extends 'main.html' /} #{set title:'Cadastro de administradores' /}
+
+
+<body class="hold-transition register-page">
+
+	<center><div class="register-box">
+		<div class="card card-outline card-primary">
+			<div class="card-header text-center">
+				<a class="h1"><b>PORTAL NUART</b></a>
+			</div>
+			<div class="card-body">
+				<p class="login-box-msg">Cadastro do Administrador</p>
+
+				<form action="@{Administradores.salvar}" method="post">
+					<input type="hidden" name="adm.id" value="${adm?.id}">
+					<div class="input-group mb-3">
+						<input id="adm-nome" class="form-control" type="text"
+							name="adm.nome" value="${adm?.nome}" placeholder="Nome">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+			<span class='vermelho'>#{error 'adm.nome' /}</span>
+	<br/>
+					<div class="input-group mb-3">
+						<input id="adm-userMatric" class="form-control" type="text"
+							name="adm.userMatric" value="${adm?.userMatric}"
+							placeholder="Matrícula">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+		<span class='vermelho'>#{error 'adm.userMatric' /}</span>
+	<br/>		
+	
+		
+
+					<div class="input-group mb-3">
+						<input id="adm-email" class="form-control" type="email"
+							name="adm.email" value="${adm?.email}" placeholder="email">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+			<span class='vermelho'>#{error 'adm.email' /}</span>
+
+<br/>	
+					<div class="input-group mb-3">
+						<input  class="form-control" type="password"
+							name="senha" value=""
+							placeholder="senha de  6 carcteres">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+					<span class='vermelho'>#{error 'adm.senha' /}</span>
+<br/>	
+				
+<div class="input-group mb-3">
+						<input  class="form-control" type="password"
+							name="adm.confirmacaoSenha" value=""
+							placeholder="confirme a senha">
+						<div class="input-group-append">
+							<div class="input-group-text">
+								<span class="fas fa-user"></span>
+							</div>
+						</div>
+					</div>
+<br/>	
+				
+			
+	
+					<button type="submit" class="btn btn-success">CADASTRAR</button>
+
+				</form>
+
+				<div class="social-auth-links text-center">
+					<a href="@{Administradores.listar()}" class="btn btn-block btn-warning">ADMINISTRADORES
+						CADASTRADOS </a>
+				</div>
+
+				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+					<a href="@{Application.index()}" class="btn btn-danger"> VOLTAR </a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div></center>
+
+	<!-- jQuery -->
+	<script src="@{'/public/AdminLTE/plugins/jquery/jquery.min.js'}"></script>
+	<!-- Bootstrap 4 -->
+	<script
+		src="@{'/public/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js'}"></script>
+	<!-- AdminLTE App -->
+	<script src="@{'/public/AdminLTE/dist/js/adminlte.min.js'}"></script>
+</body>
+</html>
+
+
+
+
+

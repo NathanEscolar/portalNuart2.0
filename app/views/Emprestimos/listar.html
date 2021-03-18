@@ -1,0 +1,99 @@
+#{extends 'main.html' /} #{set title:'Todos os emprestimos' /}
+
+
+<body class="hold-transition sidebar-mini">
+
+	<div class="wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header">
+							<h1 class="card-title">
+								<b>EMPRESTIMOS CADASTRADOS</b>
+							</h1>
+
+							<div class="card-tools">
+								<div class="input-group input-group-sm" style="width: 150px;">
+									<input type="text" name="table_search"
+										class="form-control float-right" placeholder="Buscar">
+
+									<div class="input-group-append">
+										<button type="submit" class="btn btn-default">
+											<i class="fas fa-search"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- /.card-header -->
+						<div class="card-body table-responsive p-0">
+							<table class="table table-hover text-nowrap">
+								<thead>
+									<tr>
+
+										<th>Data de solicitação</th>
+										<th>Data de devolucação</th>
+										<th>Solicitante</th>
+										<th>Situação</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									#{list items:emprestimos, as:'emp'}
+									<tr>
+
+										<td>${emp.dataEmpIn}</td>
+										<td>${emp.dataEmpFn}</td>
+										<td>${emp.usuario.nome}</td>
+										<td>${emp.situacao}</td>
+									
+										<td class="d-grid gap-2 d-md-flex justify-content-md-end"><a
+											href='@{Emprestimos.editar(emp?.id)}'
+											class="btn btn-primary me-md-2">EDITAR</a> <a
+											href='@{Emprestimos.deletar(emp.id)}'
+											class="btn btn-danger me-md-2">REMOVER</a><a
+											href='@{Emprestimos.detalhesEmp(emp.id)}'
+											class="btn btn-danger me-md-2">DETALHES</a></td>
+									</tr>
+								
+									
+									#{/list} #{else}
+									<th class="btn btn-block btn-danger"><b>NENHUM EMPRESTIMO
+											CADASTRADO</b></th> #{/else}
+								</tbody/>
+							</table>
+						</div>
+						<!-- /.card-body -->
+					</div>
+					<!-- /.card -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="@{'/public/AdminLTE/plugins/jquery/jquery.min.js'}"></script>
+	<!-- Bootstrap 4 -->
+	<script
+		src="@{'/public/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js'}"></script>
+	<!-- AdminLTE App -->
+	<script src="@{'/public/AdminLTE/dist/js/adminlte.min.js'}"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="@{'/public/AdminLTE/dist/js/demo.js'}"></script>
+
+	<div class="d-grid gap-2">
+		<button>
+			<a href="@{Application.index}" class="btn btn-primary">PÁGINA
+				INICIAL</a><br>
+		</button>
+	</div>
+
+	<button>
+		<a href="@{Emprestimos.selecionarMat()}" class="btn btn-info"> 
+			SOLICITAR NOVO MATERIAL </a>
+	</button>
+
+</body>
+</html>
